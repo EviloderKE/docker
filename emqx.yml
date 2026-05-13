@@ -1,0 +1,17 @@
+services:
+
+  emqx:
+    image: emqx/emqx:6.2.0
+    container_name: emqx
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "8083:8083"
+      - "8883:8883"
+      - "18083:18083"
+    environment:
+      EMQX_ALLOW_ANONYMOUS: "false"
+      TZ: Asia/Shanghai
+    volumes:
+      - ./data/emqx/data:/opt/emqx/data
+      - ./data/emqx/log:/opt/emqx/log
